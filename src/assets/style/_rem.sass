@@ -1,0 +1,15 @@
+@function _rem($value)
+  @return ($value * 1px) / $root-font-size * 1rem
+
+@function rem($values...)
+  $ret: ()
+  $separator: list-separator($values)
+
+  @each $value in $values
+    @if type-of($value) == 'number'
+      $ret: append($ret, _rem($value), $separator)
+    @else if type-of($value) == 'list'
+      $ret: append($ret, rem($value...), $separator)
+    @else
+      $ret: append($ret, $value, $separator)
+  @return $ret

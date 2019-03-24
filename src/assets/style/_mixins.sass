@@ -1,0 +1,33 @@
+@mixin media-breakpoint-down($width)
+  @media screen and (max-device-width: $width)
+    @content
+
+@mixin media-breakpoint-up($width)
+  @media screen and (min-device-width: $width)
+    @content
+
+@mixin media-iphone5()
+  @include media-breakpoint-down($device-width-iphone5)
+    @content
+
+@mixin clearfix()
+  &::after
+    display: block
+    clear: both
+    content: ""
+
+@mixin text-truncate()
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+@mixin absolute-center
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin flex($horizontal: center, $vertical: center)
+  display: flex
+  justify-content: $horizontal
+  align-items: $vertical
